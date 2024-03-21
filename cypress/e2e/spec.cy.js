@@ -1,14 +1,23 @@
 describe('Тесты на hh.ru', () => {
+  it('Отклик на вакансию', () => {
+    cy.visit('https://tomsk.hh.ru');
+    cy.contains('Войти').click();
+    cy.get('input[name="login"]').type('eyesavenue@list.ru');
+    cy.contains('Войти с паролем').click();
+    cy.get('input[aria-label="Введите пароль"]').type('dspiucnsicnaisnci123sdocnsdpcin');
+    cy.get('button[data-qa="account-login-submit"]').click();
+    cy.get('div#HH-React-Root > div > div > div.HH-MainContent.HH-Supernova-MainContent > div.main-content.main-content_broad-spacing > div:nth-child(2) > div > div.bloko-column.bloko-column_xs-4.bloko-column_s-8.bloko-column_m-8.bloko-column_l-12 > div:nth-child(4) > div > div.serp-item-controls > div.serp-item-control-gt-xs--AkKykYTSX24KOQAbGpkV').click();
+    cy.wait(2000);
+  });
+
+
+
+
+
   it('Подтверждение города', () => {
     cy.visit('https://tomsk.hh.ru');
     cy.contains('Ваш регион — Томск?').should('be.visible');
     cy.contains('Всё верно').click().should('exist');
-  });
-
-  it('Навигация по сайту', () => {
-    cy.visit('https://tomsk.hh.ru');
-    cy.contains('Работодателям').click();
-    cy.contains('Соискателям').click().should('exist');
   });
 
   it('Авторизация существующего пользователя без пароля', () => {
@@ -48,12 +57,15 @@ describe('Тесты на hh.ru', () => {
 
   });
 
-  it('Проверка открытия деталей вакансии', () => {
-    cy.visit('https://hh.ru');
-    cy.get('input[data-qa="search-input"]').type('Тестировщик');
-    cy.get('[data-qa="search-button"] button').click({ force: true });
-    cy.pause();
-    cy.get('div#a11y-main-content > div:nth-child(2) > div > div.vacancy-serp-item-body > div > div.vacancy-serp-item-company > div > div.bloko-v-spacing-container.bloko-v-spacing-container_base-2 > div > div.vacancy-serp-item__meta-info-company > a').click().should('exist');
+  it('Отклик на вакансию', () => {
+    cy.visit('https://tomsk.hh.ru');
+    cy.contains('Войти').click();
+    cy.get('input[name="login"]').type('eyesavenue@list.ru');
+    cy.contains('Войти с паролем').click();
+    cy.get('input[aria-label="Введите пароль"]').type('dspiucnsicnaisnci123sdocnsdpcin');
+    cy.get('button[data-qa="account-login-submit"]').click();
+    cy.get('div#HH-React-Root > div > div > div.HH-MainContent.HH-Supernova-MainContent > div.main-content.main-content_broad-spacing > div:nth-child(2) > div > div.bloko-column.bloko-column_xs-4.bloko-column_s-8.bloko-column_m-8.bloko-column_l-12 > div:nth-child(4) > div > div.serp-item-controls > div.serp-item-control-gt-xs--AkKykYTSX24KOQAbGpkV').click();
+    cy.wait(2000);
   });
 
   it('Проверка работы фильтров в поиске вакансий', () => {
